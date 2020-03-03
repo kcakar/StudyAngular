@@ -30,7 +30,9 @@
       selector: "custom-html-element",  
       templateUrl: "./my.component.html"  
    })  
-   export class MyComponent{}
+   export class MyComponent{
+    constructor(public variable:string){}
+   }
    ```
    **Note**: A component can belong to only one module! You can import a module if you want to use a component in that module.
    
@@ -84,6 +86,14 @@
   ```
     {{component.variableName | pipe1:'param1':'param2':'param3' | pipe2 | pipe3 }}
   ```
+* **Interface**
+  Interfaces specify a related set of properties and methods. Classes implement interfaces to support them. You can use interfaces as data types. Create class only if there's some functionality to use.
+```
+  export interface IProduct{
+    productId: number;
+    calcualateDiscount(percent:number):number; 
+  }
+```
 
 ## Convention  
 * Modules are named with PascalCasing. Add Module at the end of the name: **NameModule**
