@@ -9,21 +9,25 @@
   
 * **Decorator**  
   Decorators add additional functionality to classes. In angular it is the MetaData. Angular has built in decorators. Syntax:  
-  `@DecoratorName({  
+   ```
+   @DecoratorName({  
     DecoratorProp:DecoratorValue  
    })  
-   export class ClassName{}`  
+   export class ClassName{}
+   ```  
    
 * **Typescript**  
   Angular is mostly used with typescript. Its a strongly typed language with OOP features.  
   
 * **Component**  
   Angular consists of components. Every component is a class with the Component decorator. Syntax:  
-   `@Component({  
+   ```
+   @Component({  
       selector: "custom-html-element",  
       templateUrl: "./my.component.html"  
    })  
-   export class MyComponent{}`  
+   export class MyComponent{}
+   ```
    
 ## Convention  
 * Modules are named like **NameModule**.  
