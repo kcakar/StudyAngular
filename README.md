@@ -82,7 +82,7 @@
 * **Pipes**  
   Pipes transform bound properties before display. Angular has built in pipes for date, number, decimal, uppercase, lowercase percent, currency, json, slice etc. You can also have custom pipes.  
   ```
-    {{component.variableName | pipe1 | pipe2 | pipe3 }}
+    {{component.variableName | pipe1:'param1':'param2':'param3' | pipe2 | pipe3 }}
   ```
 
 ## Convention  
