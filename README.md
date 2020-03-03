@@ -30,9 +30,10 @@
    ```
    
 ## Convention  
-* Modules are named like **NameModule**.  
-* Components are named like **NameComponent**.  
-* Use camelcase for class properties. **propertyName**.  
+* Modules are named with PascalCasing. Add Module at the end of the name: **NameModule**
+* Components are named with PascalCasing. Add Component at the end of the name: **NameComponent**
+* Properties are named with camelCasing: **propertyName**. 
+* Functions are named with camelCasing: **functionName**
 * Each component has their own folder. Their files are named as below:    
   * app.component.css  
   * app.component.html  
