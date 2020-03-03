@@ -56,7 +56,7 @@
       <h2>{{"Title:" + getTitle()}}</h2>
       <h3 innerText={{pageTitle}}></h3>
     ```
-    - **Property Binding**: This is also one way binding, from the class to the template.
+    - **Property Binding**: This is also one way binding, from the class to the template. It is a **one way** binding.
     [BindingTarget]:'BindingSource'  
     
     ```
@@ -66,11 +66,25 @@
          [style.height.px]='imageWidth'
          [style.margin.px]='imageMargin'>
     ```
-    - **Event binding**: This is used to bind events to functions in the class.  
+    - **Event binding**: This is used to bind events to functions in the class. It is a **one way** binding.
     (targetEvent)='functionName()'
     ```
       <button class="btn btn-primary" (click)='toggleImage()'></button>
     ```
+    - **Two-way Binding**: To use two way bindign, you need to use ngModel directive.  
+    [ ] are to indicate property binding, from the class property to the template.
+    ( ) to indicate event binding, to send a notification when the data changes in tempalate , to the class. 
+    [()] BANANA IN A BOX!  
+    
+    ```
+      <input [(ngModel)]=''
+    ```
+* **Pipes**  
+  Pipes transform bound properties before display. Angular has built in pipes for date, number, decimal, uppercase, lowercase percent, currency, json, slice etc. You can also have custom pipes.  
+  ```
+    {{component.variableName | pipe1 | pipe2 | pipe3 }}
+  ```
+
 ## Convention  
 * Modules are named with PascalCasing. Add Module at the end of the name: **NameModule**
 * Components are named with PascalCasing. Add Component at the end of the name: **NameComponent**
@@ -85,6 +99,10 @@
  * Anglular CLI  
  * Angular  
  * Typescript  
+
+# Angular built-in modules:
+  * **BrowserModule**: Has structural stuff like \*ngFor, \*ngIf, \*ngSwitch etc. Also has some pipes.
+  * **FormsModule**: Has form stuff. Has @ngModal directive used for two-way binding.
 
 ## What you need
  * Create index file. Create a custom element for the root component.
@@ -107,6 +125,7 @@
    .catch(err => console.error(err));
 
  ```
+ 
 # Angular's Built-in Directives  
   The asteriks in front of a directive means its a structural directive. These direcives are part of the BrowserModule.
   * \*ngIf: Removes or adds element depending on the condition.  
