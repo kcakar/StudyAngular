@@ -11,7 +11,7 @@
   Angular is mostly used with typescript. Its a strongly typed language with OOP features.  
   Variables:  
   `name:string = 'kerem'`  
-  Functions:
+  Functions:  
   `functionName(): void { }`
   
 * **Decorator**  
