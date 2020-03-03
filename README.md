@@ -9,6 +9,10 @@
   
 * **Typescript**  
   Angular is mostly used with typescript. Its a strongly typed language with OOP features.  
+  Variables:  
+  `name:string = 'kerem'`  
+  Functions:
+  `functionName(): void { }`
   
 * **Decorator**  
   Decorators add additional functionality to classes. In angular it is the MetaData. Angular has built in decorators. Syntax:  
@@ -61,6 +65,11 @@
          [style.width.px]='imageWidth'
          [style.height.px]='imageWidth'
          [style.margin.px]='imageMargin'>
+    ```
+    - **Event binding**: This is used to bind events to functions in the class.  
+    (targetEvent)='functionName()'
+    ```
+      <button class="btn btn-primary" (click)='toggleImage()'></button>
     ```
 ## Convention  
 * Modules are named with PascalCasing. Add Module at the end of the name: **NameModule**
