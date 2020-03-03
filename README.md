@@ -7,8 +7,6 @@
 * **ES Modules**  
   ES modules are used to organize code.  
   
-
-   
 * **Typescript**  
   Angular is mostly used with typescript. Its a strongly typed language with OOP features.  
   
@@ -54,8 +52,16 @@
       <h2>{{"Title:" + getTitle()}}</h2>
       <h3 innerText={{pageTitle}}></h3>
     ```
-
-   
+    - **Property Binding**: This is also one way binding, from the class to the template.
+    [BindingTarget]:'BindingSource'  
+    
+    ```
+    <img [src]='product.imageUrl'
+         [title]='product.productName'
+         [style.width.px]='imageWidth'
+         [style.height.px]='imageWidth'
+         [style.margin.px]='imageMargin'>
+    ```
 ## Convention  
 * Modules are named with PascalCasing. Add Module at the end of the name: **NameModule**
 * Components are named with PascalCasing. Add Component at the end of the name: **NameComponent**
@@ -92,7 +98,27 @@
    .catch(err => console.error(err));
 
  ```
-# Functions  
+# Angular's Built-in Directives  
+  The asteriks in front of a directive means its a structural directive. These direcives are part of the BrowserModule.
+  * \*ngIf: Removes or adds element depending on the condition.  
+  ```
+    <table class="table" *ngIf="products && products.length"></table>
+  ```
+  * \*ngFor: Foreach!
+  ```
+  <tr *ngFor="let product of products">
+    <td></td>
+    <td>{{product.productName}}</td>
+    <td>{{product.productCode}}</td>
+    <td>{{product.releaseDate}}</td>
+    <td>{{product.starRating}}</td>
+  </tr>
+  ```
+  
+   * for of vs for in:
+     for of iterates over iterable objects such as array.
+     for in iterates over properties of an object.
+  * \*ngSwitchCase:
 
     
 
