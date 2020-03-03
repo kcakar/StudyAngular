@@ -50,13 +50,13 @@
 * **Binding**
   The data communication between the class and the template. Binding syntax is located at the template.
   Types of bindings:  
-    - **Interopelation**: Uses double curly bracelets to bind the data to the template. It is a **one way** binding, from the class, to the template.
+    - <-**Interopelation**: Uses double curly bracelets to bind the data to the template. It is a **one way** binding, from the class, to the template. Interopelation always converts to string.
     ```
       <h1>{{pageTitle}}</h1>
       <h2>{{"Title:" + getTitle()}}</h2>
       <h3 innerText={{pageTitle}}></h3>
     ```
-    - **Property Binding**: This is also one way binding, from the class to the template. It is a **one way** binding.
+    - <-**Property Binding**: This is also one way binding, from the class to the template. It is a **one way** binding. It doesnt convert the result to a string, so it is good for binding nonstring variables to directives.
     [BindingTarget]:'BindingSource'  
     
     ```
@@ -66,12 +66,12 @@
          [style.height.px]='imageWidth'
          [style.margin.px]='imageMargin'>
     ```
-    - **Event binding**: This is used to bind events to functions in the class. It is a **one way** binding.
+    - ->**Event binding**: This is used to bind events to functions in the class. It is a **one way** binding.
     (targetEvent)='functionName()'
     ```
       <button class="btn btn-primary" (click)='toggleImage()'></button>
     ```
-    - **Two-way Binding**: To use two way bindign, you need to use ngModel directive.  
+    - <->**Two-way Binding**: To use two way bindign, you need to use ngModel directive.  
     [ ] are to indicate property binding, from the class property to the template.
     ( ) to indicate event binding, to send a notification when the data changes in tempalate , to the class. 
     [()] BANANA IN A BOX!  
