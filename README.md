@@ -55,34 +55,34 @@
   The data communication between the class and the template. Binding syntax is located at the template.
   Types of bindings:  
     - <-**Interopelation**: Uses double curly bracelets to bind the data to the template. It is a **one way** binding, from the class, to the template. Interopelation always converts to string.
-    ```
-      <h1>{{pageTitle}}</h1>
-      <h2>{{"Title:" + getTitle()}}</h2>
-      <h3 innerText={{pageTitle}}></h3>
-    ```
+      ```
+        <h1>{{pageTitle}}</h1>
+        <h2>{{"Title:" + getTitle()}}</h2>
+        <h3 innerText={{pageTitle}}></h3>
+      ```
     - <-**Property Binding**: This is also one way binding, from the class to the template. It is a **one way** binding. It doesnt convert the result to a string, so it is good for binding nonstring variables to directives.
     [BindingTarget]:'BindingSource'  
     
-    ```
-    <img [src]='product.imageUrl'
-         [title]='product.productName'
-         [style.width.px]='imageWidth'
-         [style.height.px]='imageWidth'
-         [style.margin.px]='imageMargin'>
-    ```
+        ```
+        <img [src]='product.imageUrl'
+             [title]='product.productName'
+             [style.width.px]='imageWidth'
+             [style.height.px]='imageWidth'
+             [style.margin.px]='imageMargin'>
+        ```
     - ->**Event binding**: This is used to bind events to functions in the class. It is a **one way** binding.
     (targetEvent)='functionName()'
-    ```
-      <button class="btn btn-primary" (click)='toggleImage()'></button>
-    ```
-    - <->**Two-way Binding**: To use two way bindign, you need to use ngModel directive.  
-    [ ] are to indicate property binding, from the class property to the template.
-    ( ) to indicate event binding, to send a notification when the data changes in tempalate , to the class. 
+        ```
+          <button class="btn btn-primary" (click)='toggleImage()'></button>
+        ```
+    - <->**Two-way Binding**: To use two way bindign, you need to use ngModel directive.    
+    [ ] are to indicate property binding, from the class property to the template.  
+    ( ) to indicate event binding, to send a notification when the data changes in tempalate , to the class.  
     [()] BANANA IN A BOX!  
     
-    ```
-      <input [(ngModel)]=''
-    ```
+        ```
+          <input [(ngModel)]=''
+        ```
 * **Pipes**  
   Pipes transform bound properties before display. Angular has built in pipes for date, number, decimal, uppercase, lowercase percent, currency, json, slice etc. You can also have custom pipes. Pipes are part of @angular/core.
   ```
@@ -101,13 +101,13 @@
     ```
   
 * **Interface**
-  Interfaces specify a related set of properties and methods. Classes implement interfaces to support them. You can use interfaces as data types. Create class only if there's some functionality to use.
-```
-  export interface IProduct{
-    productId: number;
-    calcualateDiscount(percent:number):number; 
-  }
-```
+  Interfaces specify a related set of properties and methods. Classes implement interfaces to support them. You can use interfaces as   data types. Create class only if there's some functionality to use.
+  ```
+    export interface IProduct{
+      productId: number;
+      calcualateDiscount(percent:number):number; 
+    }
+  ```
 
 ## Convention  
 * Modules are named with PascalCasing. Add Module at the end of the name: **NameModule**
@@ -131,19 +131,19 @@
 # Angular's Built-in Directives  
   The asteriks in front of a directive means its a structural directive. These direcives are part of the BrowserModule.
   * \*ngIf: Removes or adds element depending on the condition.  
-  ```
-    <table class="table" *ngIf="products && products.length"></table>
-  ```
+    ```
+      <table class="table" *ngIf="products && products.length"></table>
+    ```
   * \*ngFor: Foreach!
-  ```
-  <tr *ngFor="let product of products">
-    <td></td>
-    <td>{{product.productName}}</td>
-    <td>{{product.productCode}}</td>
-    <td>{{product.releaseDate}}</td>
-    <td>{{product.starRating}}</td>
-  </tr>
-  ```
+    ```
+    <tr *ngFor="let product of products">
+      <td></td>
+      <td>{{product.productName}}</td>
+      <td>{{product.productCode}}</td>
+      <td>{{product.releaseDate}}</td>
+      <td>{{product.starRating}}</td>
+    </tr>
+    ```
   
    * for of vs for in:
      for of iterates over iterable objects such as array.
@@ -151,34 +151,33 @@
   * \*ngSwitchCase:
 
 ## Getters and Setters  
-  ```
-  get filter():string{
-    return this._filter;
-  }
-  set filter(value:string){
-    this._filter=value;
-    this.filterProducts();
-  }
-  ```
+    ```
+    get filter():string{
+      return this._filter;
+    }
+    set filter(value:string){
+      this._filter=value;
+      this.filterProducts();
+    }
+    ```
     
 ## What you need
  * Create index file. Create a custom element for the root component.
  * Create root **AppComponent**. Decorate it with Component tag. Add selector and template.
  * Create root **AppModule**. Decorate it with NgModule tag. Add declarations, imports and boostrap. Bootstrap is the root component. Declarations are the list of components that the module uses. Imports are helper stuff.
  * On Main.ts, use your AppModule to bootstrap your application.
- ```
- import { enableProdMode } from '@angular/core';
- import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+  ```
+  import { enableProdMode } from '@angular/core';
+  import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+  import { AppModule } from './app/app.module';
+  import { environment } from './environments/environment';
 
- import { AppModule } from './app/app.module';
- import { environment } from './environments/environment';
+  if (environment.production) {
+    enableProdMode();
+  }
 
- if (environment.production) {
-   enableProdMode();
- }
+  platformBrowserDynamic()
+    .bootstrapModule(AppModule)
+    .catch(err => console.error(err));
 
- platformBrowserDynamic()
-   .bootstrapModule(AppModule)
-   .catch(err => console.error(err));
-
- ```
+  ```
