@@ -89,16 +89,16 @@
     {{component.variableName | pipe1:'param1':'param2':'param3' | pipe2 | pipe3 }}
   ```
   - **Custom pipes**: To implement a custom pipe, you should decorate the class with @Pipe keyword and then implement PipeTransform interface. Also you need to add the pipe to the declarations part of the module. **DO NOT USE IT FOR FILTERING**
-  ```
-  @Pipe({
-    name:'convertToSpaces'
-  })
-  export class ChangeCharacterPipe implements PipeTransform{
-    transform(value: string, character:string):string {
-      return value.replace(character,"");
+    ```
+    @Pipe({
+       name:'convertToSpaces'
+    })
+    export class ChangeCharacterPipe implements PipeTransform{
+      transform(value: string, character:string):string {
+        return value.replace(character,"");
+      }
     }
-  }
-  ```
+    ```
   
 * **Interface**
   Interfaces specify a related set of properties and methods. Classes implement interfaces to support them. You can use interfaces as data types. Create class only if there's some functionality to use.
