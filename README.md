@@ -24,7 +24,7 @@
    ```  
    
 * **Component**  
-  Angular consists of components. Every component is a **class** with the **Component** decorator. Syntax:  
+  Angular consists of components. Every component is a **class** with the **Component** decorator. Components can be rendered as **directives** or as a **routing target**. Syntax:  
    ```
    @Component({  
       selector: "custom-html-element",  
@@ -125,28 +125,6 @@
 # Angular built-in modules:
   * **BrowserModule**: Has structural stuff like \*ngFor, \*ngIf, \*ngSwitch etc. Also has some pipes.
   * **FormsModule**: Has form stuff. Has @ngModal directive used for two-way binding.
-
-## What you need
- * Create index file. Create a custom element for the root component.
- * Create root **AppComponent**. Decorate it with Component tag. Add selector and template.
- * Create root **AppModule**. Decorate it with NgModule tag. Add declarations, imports and boostrap. Bootstrap is the root component. Declarations are the list of components that the module uses. Imports are helper stuff.
- * On Main.ts, use your AppModule to bootstrap your application.
- ```
- import { enableProdMode } from '@angular/core';
- import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
- import { AppModule } from './app/app.module';
- import { environment } from './environments/environment';
-
- if (environment.production) {
-   enableProdMode();
- }
-
- platformBrowserDynamic()
-   .bootstrapModule(AppModule)
-   .catch(err => console.error(err));
-
- ```
  
 # Angular's Built-in Directives  
   The asteriks in front of a directive means its a structural directive. These direcives are part of the BrowserModule.
@@ -170,5 +148,35 @@
      for in iterates over properties of an object.
   * \*ngSwitchCase:
 
+## Getters and Setters  
+  ```
+  get filter():string{
+    return this._filter;
+  }
+  set filter(value:string){
+    this._filter=value;
+    this.filterProducts();
+  }
+  ```
     
+## What you need
+ * Create index file. Create a custom element for the root component.
+ * Create root **AppComponent**. Decorate it with Component tag. Add selector and template.
+ * Create root **AppModule**. Decorate it with NgModule tag. Add declarations, imports and boostrap. Bootstrap is the root component. Declarations are the list of components that the module uses. Imports are helper stuff.
+ * On Main.ts, use your AppModule to bootstrap your application.
+ ```
+ import { enableProdMode } from '@angular/core';
+ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
+ import { AppModule } from './app/app.module';
+ import { environment } from './environments/environment';
+
+ if (environment.production) {
+   enableProdMode();
+ }
+
+ platformBrowserDynamic()
+   .bootstrapModule(AppModule)
+   .catch(err => console.error(err));
+
+ ```
