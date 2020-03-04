@@ -161,7 +161,7 @@
     }
     ```
 ## Passing data from parent component to child component  
-   To achieve this, you need to use @Input decoration.  
+   To achieve this, you need to use **@Input** decoration.  
    **Child component**:  
    ```
    import {Input,Component, OnChanges} from "@angular/core";
