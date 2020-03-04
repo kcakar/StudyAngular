@@ -45,13 +45,13 @@
       <ang-my-app></ang-my-app>
    </div>
    ```
-* **Template**
+* **Template**  
   The HTML of the component.
   
-* **Template Expression**
+* **Template Expression**  
   {{code}} -> These are template expressions. Their context is always the component.
   
-* **Binding**
+* **Binding**  
   The data communication between the class and the template. Binding syntax is located at the template.
   Types of bindings:  
     - <-**Interopelation**: Uses double curly bracelets to bind the data to the template. It is a **one way** binding, from the class, to the template. Interopelation always converts to string.
