@@ -160,7 +160,30 @@
       this.filterProducts();
     }
     ```
-    
+## Passing data from parent component to child component  
+   To achieve this, you need to use @Input decoration.  
+   **Child component**:  
+   ```
+   import {Input,Component, OnChanges} from "@angular/core";
+
+   @Component({
+     selector :'pm-star',
+     templateUrl : './star.component.html',
+     styleUrls:['./star.component.css']
+   })
+   export class StarComponent implements OnChanges{
+     @Input() rating:number;
+     starWidth:number;
+
+     ngOnChanges(): void {
+       this.starWidth = this.rating * 75 / 5;
+     }
+   }
+   ```  
+   **Parent component**:  
+   ```
+   <pm-star [rating]='product.starRating'></pm-star>
+   ```
 ## What you need
  * Create index file. Create a custom element for the root component.
  * Create root **AppComponent**. Decorate it with Component tag. Add selector and template.
