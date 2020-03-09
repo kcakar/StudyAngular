@@ -161,7 +161,7 @@
     }
     ```
 ## Passing data from parent component to child component  
-   To achieve this, you need to use **@Input** decoration.  
+   To achieve this, you need to use **@Input** decorator.  
    **Child component**:  
    ```
    import {Input,Component, OnChanges} from "@angular/core";
@@ -183,6 +183,46 @@
    **Parent component**:  
    ```
    <pm-star [rating]='product.starRating'></pm-star>
+   ```
+## Raising an event on Parent component when a data changes on child component
+   To achieve this, you need to use **@Output** decorator.  
+   **Child component**:  
+   ```
+   import {Input, Output, Component, OnChanges} from "@angular/core";
+
+   @Component({
+     selector :'pm-star',
+     templateUrl : './star.component.html',
+     styleUrls:['./star.component.css']
+   })
+   export class StarComponent implements OnChanges{
+     @Input() rating:number;
+     starWidth:number;
+     @Output() notify: EventEmitter<string> = new EventEmitter<string>();
+     
+     onClick(){
+      this.notify.emit('clicked!');
+     }
+   }
+   ```  
+   **Component html**:
+   ```
+   <div (click)='onClick()'></div>
+   ```
+   **Parent component**:
+   ```
+   @Component({
+      selector: "pm-products",
+      templateUrl: "./products.component.html",
+      styleUrls:["./products.component.css"]
+    })
+    export class ProductsComponent implements OnChanges {
+      onNotify(message:string):void{} 
+    }
+   ```
+   **Parent html**
+   ```
+    <pm-star (notify)='onNotify($event)'></pm-star>
    ```
 ## What you need
  * Create index file. Create a custom element for the root component.
