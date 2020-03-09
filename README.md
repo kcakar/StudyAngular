@@ -108,7 +108,9 @@
       calcualateDiscount(percent:number):number; 
     }
   ```
-
+* **Dependency Injection**
+  A coding pattern in which a class receives the instances of objects it needs(dependencies) from an external source rather than creating them itself.
+  
 ## Convention  
 * Modules are named with PascalCasing. Add Module at the end of the name: **NameModule**
 * Components are named with PascalCasing. Add Component at the end of the name: **NameComponent**
@@ -160,6 +162,29 @@
       this.filterProducts();
     }
     ```
+    
+    
+## What you need
+ * Create index file. Create a custom element for the root component.
+ * Create root **AppComponent**. Decorate it with Component tag. Add selector and template.
+ * Create root **AppModule**. Decorate it with NgModule tag. Add declarations, imports and boostrap. Bootstrap is the root component. Declarations are the list of components that the module uses. Imports are helper stuff.
+ * On Main.ts, use your AppModule to bootstrap your application.
+  ```
+  import { enableProdMode } from '@angular/core';
+  import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+  import { AppModule } from './app/app.module';
+  import { environment } from './environments/environment';
+
+  if (environment.production) {
+    enableProdMode();
+  }
+
+  platformBrowserDynamic()
+    .bootstrapModule(AppModule)
+    .catch(err => console.error(err));
+
+  ```
+
 ## Passing data from parent component to child component  
    To achieve this, you need to use **@Input** decorator.  
    **Child component**:  
@@ -185,7 +210,8 @@
    <pm-star [rating]='product.starRating'></pm-star>
    ```
 ## Raising an event on Parent component when a data changes on child component
-   To achieve this, you need to use **@Output** decorator.  
+   To achieve this, you need to use **@Output** decorator.
+   **Only variables with the type EventEmitter should be marked with the @Output decorator.**
    **Child component**:  
    ```
    import {Input, Output, Component, OnChanges} from "@angular/core";
@@ -224,23 +250,13 @@
    ```
     <pm-star (notify)='onNotify($event)'></pm-star>
    ```
-## What you need
- * Create index file. Create a custom element for the root component.
- * Create root **AppComponent**. Decorate it with Component tag. Add selector and template.
- * Create root **AppModule**. Decorate it with NgModule tag. Add declarations, imports and boostrap. Bootstrap is the root component. Declarations are the list of components that the module uses. Imports are helper stuff.
- * On Main.ts, use your AppModule to bootstrap your application.
-  ```
-  import { enableProdMode } from '@angular/core';
-  import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-  import { AppModule } from './app/app.module';
-  import { environment } from './environments/environment';
+## Services
+   Angular is using an injector to provide services to the app. This injector creates a singleton instance of the service and lets you use its data and functions. 
+   - Create service class
+   - Define the metadata with a decorator: **@Injectable()**
+   - Register the service to Angular
+   - Inject the service on the constructor of the desired componenet
+   
+   
 
-  if (environment.production) {
-    enableProdMode();
-  }
-
-  platformBrowserDynamic()
-    .bootstrapModule(AppModule)
-    .catch(err => console.error(err));
-
-  ```
+   
