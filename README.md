@@ -255,8 +255,17 @@
    - Create service class
    - Define the metadata with a decorator: **@Injectable()**
    - Register the service to Angular
-   - Inject the service on the constructor of the desired componenet
+   - Inject the service on the constructor of the desired componenet  
+     
+   You can register a server to the Root Injector or to a Component. If you inject it to the root, its available to everywhere. If you inject it to a component, its available to that component and its children. If you inject it to a component, a new instance of service is created for each component. If not theres only one instance of the service is created for the app.  
    
+   **Registering service syntax
+   ```
+   @Injectable({
+      providedIn: 'root'
+   })
+   export class ProductService{ }
+   ```
    
 
    
