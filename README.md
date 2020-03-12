@@ -297,5 +297,32 @@
    ```  
    **NOTE: DO NOT DO STUFF WITH SIDE EFFECTS OR STUFF THAT TAKES TIME IN CONSTRUCTOR**
    
-
+## HTTP Service 
+   **Usage**:
+   1) Import the service module to the desired module
+   ```
+   @NgModule({
+    imports: [
+      HttpClientModule
+      ],
+      declarations: [
+        AppComponent
+      ],
+      bootstrap: [AppComponent]
+   })
+   export class AppModule { }
+   ```
+   2) Inject the service in the component's constructor
+   3) Use the service
+   ```  
+   export class ProductService{
+      private productUrl = 'www.service.com/api/products';
+      
+      constructor(private http: HttpClient){}
+      
+      getProducts(){
+        this.http.get(this.productUrl);
+      }
+   }
+   ```  
    
