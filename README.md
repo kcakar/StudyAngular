@@ -108,9 +108,22 @@
       calcualateDiscount(percent:number):number; 
     }
   ```
-* **Dependency Injection**
-  A coding pattern in which a class receives the instances of objects it needs(dependencies) from an external source rather than creating them itself.
-  
+* **Dependency Injection**  
+  A coding pattern in which a class receives the instances of objects it needs(dependencies) from an external source rather than  creating them itself.  
+
+* **Observables** (RXJS) 
+  - Observables help managing asynchronous data. They threat events as a collection.  
+  - You can subscribe to receive notifications about these events to act on them.  
+  - **Observable Operators:** These are methods on observables that compose new observables. They can transform the observable by processing each value as they are emitted. Ex: map,filter,take,merge  
+  - You can use the below website to play around with observables:  
+     https://rxmarbles.com/
+  - **Composing Operators:** Also referred as pipable operators because they use the pipe method. This is a way of combining multiple observable operators.
+  - **Promises vs Observables**: 
+      - Promise retursn a single future value while observable emits multiple values over time. 
+      - Promise is lazy but Observable is not lazy. 
+      - Promise is not cancellable but observable is.
+   
+
 ## Convention  
 * Modules are named with PascalCasing. Add Module at the end of the name: **NameModule**
 * Components are named with PascalCasing. Add Component at the end of the name: **NameComponent**
@@ -120,6 +133,7 @@
   * app.component.css  
   * app.component.html  
   * app.component.ts  
+* Variables that refer to an observable end with a dollar sign: **source$**
 
 # Packages
  * Anglular CLI  
@@ -259,13 +273,29 @@
      
    You can register a server to the Root Injector or to a Component. If you inject it to the root, its available to everywhere. If you inject it to a component, its available to that component and its children. If you inject it to a component, a new instance of service is created for each component. If not theres only one instance of the service is created for the app.  
    
-   **Registering service syntax
+   **Registering service syntax:**
    ```
    @Injectable({
       providedIn: 'root'
    })
    export class ProductService{ }
-   ```
+   ```  
+   **Usage of service in a component:**  
+   ```  
+   //LONG VERSION
+   export class ProductsComponent{
+     private _productService;
+     constructor(productService:ProductService){
+        this._productService = productService;
+     }
+   }
+   //SHORTHAND
+    export class ProductsComponent{
+     constructor(private productService:ProductService){
+     }
+   }
+   ```  
+   **NOTE: DO NOT DO STUFF WITH SIDE EFFECTS OR STUFF THAT TAKES TIME IN CONSTRUCTOR**
    
 
    
