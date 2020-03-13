@@ -83,6 +83,10 @@
         ```
           <input [(ngModel)]=''
         ```
+        **NOTE**: This doesnt work with null control operator.
+        ```
+        [(ngModel)]='product?.name'
+        ```
 * **Pipes**  
   Pipes transform bound properties before display. Angular has built in pipes for date, number, decimal, uppercase, lowercase percent, currency, json, slice etc. You can also have custom pipes. Pipes are part of @angular/core.
   ```
@@ -342,5 +346,9 @@
       }
    }
    ```  
+## Routing
+   To use Angular routing, you have to include RouterModule in your app. It is part of the @angular/router.
+   
+   
 
 
