@@ -113,7 +113,24 @@
 
 * **Observables** (RXJS) 
   - Observables help managing asynchronous data. They threat events as a collection.  
-  - You can subscribe to receive notifications about these events to act on them.  
+  - You can subscribe to receive notifications about these events to act on them.
+  ```
+    x.subscribe();
+    x.subscribe(Observer);
+    //long version
+    let sub =  productService.getProducts().subscribe({
+      next: products => this.products=products,
+      error: err => this.errorMessage = err,
+      completeFn
+    });
+    //short version
+     let sub =  productService.getProducts().subscribe({
+      next(products) {this.products=products},
+      error (err) => {this.errorMessage = err},
+      completeFn
+    });
+    
+  ```
   - **Observable Operators:** These are methods on observables that compose new observables. They can transform the observable by processing each value as they are emitted. Ex: map,filter,take,merge  
   - You can use the below website to play around with observables:  
      https://rxmarbles.com/
@@ -320,9 +337,10 @@
       
       constructor(private http: HttpClient){}
       
-      getProducts(){
-        this.http.get(this.productUrl);
+      getProducts(): Observable<IProduct[]>{
+        this.http.get<IProduct[]>(this.productUrl);
       }
    }
    ```  
-   
+
+
