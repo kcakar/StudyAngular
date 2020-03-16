@@ -369,9 +369,9 @@
             //BELOW IS THE WILDCARD PATH
             { path: "**", component:WelcomeComponent }
           ])
-        ],
-       ```   
-    4) Create routing buttons:
+        ],  
+      ```    
+   4) Create routing buttons:
        ```
        <ul class="nav navbar-nav">
          <li><a [routerLink]="['/welcome']">Home</a></li>
