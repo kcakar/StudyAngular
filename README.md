@@ -356,7 +356,7 @@
       ```
    2) Add th routing module to the app.module.ts
    3) Set the routes using forRoot method
-      ´´´
+      ```
       @NgModule({
         imports: [
           BrowserModule,
@@ -370,15 +370,15 @@
             { path: "**", component:WelcomeComponent }
           ])
         ],
-        ´´´   
+        ```   
     4) Create routing buttons:
-    ```
-    <ul class="nav navbar-nav">
-      <li><a [routerLink]="['/welcome']">Home</a></li>
-      <li><a [routerLink]="['/products']">Product List</a></li>
-    </ul>
-    <router-outlet></router-outlet>
-    ```
+       ```
+       <ul class="nav navbar-nav">
+         <li><a [routerLink]="['/welcome']">Home</a></li>
+         <li><a [routerLink]="['/products']">Product List</a></li>
+        </ul>
+        <router-outlet></router-outlet>
+        ```
    
    
    
