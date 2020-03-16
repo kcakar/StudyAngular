@@ -347,7 +347,7 @@
    }
    ```  
 ## Routing
-   To use Angular routing, you have to include RouterModule in your app. It is part of the @angular/router.
+   To use Angular routing, you have to include RouterModule in your app. It is part of the @angular/router. This route makes configured routes available to the whole app.
    
    
 
