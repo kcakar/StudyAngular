@@ -347,7 +347,44 @@
    }
    ```  
 ## Routing
-   To use Angular routing, you have to include RouterModule in your app. It is part of the @angular/router. This route makes configured routes available to the whole app.
+   To use Angular routing, you have to include RouterModule in your app. It is part of the @angular/router. This route makes configured routes available to the whole app. To configure the routes use the forRoot method. The routes should be from more specific to less specific order. Use  <router-outlet> directive to show the route content.
+
+   **To set up routing**
+   1) Add a base tag to the index.html file:
+      ```
+      <base href="/">
+      ```
+   2) Add th routing module to the app.module.ts
+   3) Set the routes using forRoot method
+      ´´´
+      @NgModule({
+        imports: [
+          BrowserModule,
+          RouterModule.forRoot([
+            { path :"products", component: ProductsComponent },
+            { path :"products/:id", component: ProductDetailComponent },
+            { path: "welcome", component: WelcomeComponent},
+            //BELOW IS THE DEFAULT ROUTE
+            { path: "" , redirectTo:"welcome",pathMatch:"full"},
+            //BELOW IS THE WILDCARD PATH
+            { path: "**", component:WelcomeComponent }
+          ])
+        ],
+        ´´´   
+    4) Create routing buttons:
+    ```
+    <ul class="nav navbar-nav">
+      <li><a [routerLink]="['/welcome']">Home</a></li>
+      <li><a [routerLink]="['/products']">Product List</a></li>
+    </ul>
+    <router-outlet></router-outlet>
+    ```
+   
+   
+   
+   
+   
+   
    
    
 
