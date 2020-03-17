@@ -355,7 +355,7 @@
       <base href="/">
       ```
    2) Add th routing module to the app.module.ts
-   3) Set the routes using forRoot method
+   3) Set the routes using forRoot method:
       ```
       @NgModule({
         imports: [
@@ -371,7 +371,7 @@
           ])
         ],  
       ```    
-   4) Create routing buttons:
+   4) Create connections in the component:
        ```
        <ul class="nav navbar-nav">
          <li><a [routerLink]="['/welcome']">Home</a></li>
@@ -379,6 +379,19 @@
        </ul>
        <router-outlet></router-outlet>
         ```
+   5) You can also pass parameters to the route
+      ```
+      //For root entry: { path :"products/:id", component: ProductDetailComponent }
+      <a [routerLink]="['/products', product.productId]">
+        {{product.productName}}
+      </a>
+      ```
+   6) Retrieving parameters from the route:
+      ```
+      constuctor(private route: ActivatedRoute){
+        console.log(this.route.snapshot.paramMap.get('id'));
+      }
+      ```
    
    
    
